@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informatika Hub | Ringkasan Materi Semester 1</title>
+    
+    <!-- Memuat Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Memuat Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Memuat Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Konfigurasi Tailwind -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            900: '#312e81',
+                        }
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'fade-in': 'fadeIn 0.4s ease-out forwards',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Kustomisasi Scrollbar yang Halus */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.05);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(99, 102, 241, 0.4);
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(99, 102, 241, 0.7);
+        }
+
+        /* Efek Glassmorphism */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .dark .glass-card {
+            background: rgba(30, 41, 59, 0.75);
+            border: 1px solid rgba(51, 65, 85, 0.8);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 antialiased selection:bg-brand-500 selection:text-white overflow-x-hidden">
+
+    <!-- Latar Belakang Dekoratif Animasi -->
+    <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+        <div class="absolute top-0 -left-4 w-72 h-72 bg-purple-300 dark:bg-purple-900/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-50 animate-blob"></div>
+        <div class="absolute top-0 -right-4 w-72 h-72 bg-indigo-300 dark:bg-indigo-900/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-50 animate-blob animation-delay-2000"></div>
+        <div class="absolute -bottom-8 left-20 w-72 h-72 bg-cyan-300 dark:bg-cyan-900/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-50 animate-blob animation-delay-4000"></div>
+    </div>
+
+    <!-- Navbar Utama -->
+    <nav class="sticky top-0 z-40 glass-card border-b border-slate-200/80 dark:border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo & Judul -->
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500 to-purple-600 flex items-center justify-center text-white shadow-lg shadow-brand-500/30">
+                        <i data-lucide="cpu" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <span class="font-extrabold text-lg tracking-tight bg-gradient-to-r from-brand-600 to-purple-600 dark:from-brand-400 dark:to-purple-400 bg-clip-text text-transparent">
+                            InformatikaHub
+                        </span>
+                        <span class="hidden sm:inline-block ml-2 text-xs font-mono px-2 py-0.5 rounded-full bg-brand-100 text-brand-700 dark:bg-brand-900/50 dark:text-brand-300">
+                            Semester 1
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Navigasi Kanan: Progress Bar Mini & Tombol Tema -->
+                <div class="flex items-center gap-3 sm:gap-5">
+                    <!-- Indikator Progres Belajar -->
+                    <div class="hidden md:flex items-center gap-3 bg-slate-100 dark:bg-slate-800/80 px-3.5 py-1.5 rounded-full border border-slate-200 dark:border-slate-700">
+                        <span class="text-xs font-semibold text-slate-600 dark:text-slate-300">Progres Belajar:</span>
+                        <div class="w-24 h-2 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+                            <div id="navProgressBar" class="h-full bg-gradient-to-r from-brand-500 to-emerald-500 transition-all duration-500" style="width: 0%"></div>
+                        </div>
+                        <span id="navProgressText" class="text-xs font-mono font-bold text-brand-600 dark:text-brand-400">0/9</span>
+                    </div>
+
+                    <!-- Tombol Kuis Interaktif -->
+                    <button onclick="openQuizModal()" class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold shadow-md shadow-brand-500/20 transition-all active:scale-95">
+                        <i data-lucide="sparkles" class="w-4 h-4"></i>
+                        <span>Uji Pemahaman</span>
+                    </button>
+
+                    <!-- Tombol Toggle Dark Mode -->
+                    <button id="themeToggle" aria-label="Ganti Tema" class="p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 transition-colors">
+                        <i data-lucide="moon" class="w-5 h-5 hidden dark:block"></i>
+                        <i data-lucide="sun" class="w-5 h-5 block dark:hidden"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative pt-10 pb-8 sm:pt-16 sm:pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-50 dark:bg-brand-900/40 border border-brand-200 dark:border-brand-800 text-brand-700 dark:text-brand-300 text-xs font-semibold mb-6">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
+                </span>
+                Kurikulum Merdeka • Modul Ringkasan Terpadu
+            </div>
+            
+            <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight mb-4">
+                Kuasai Konsep Dasar <br class="hidden sm:inline">
+                <span class="bg-gradient-to-r from-brand-600 via-purple-600 to-cyan-500 dark:from-brand-400 dark:via-purple-400 dark:to-cyan-400 bg-clip-text text-transparent">
+                    Informatika Semester 1
+                </span>
+            </h1>
+            
+            <p class="text-base sm:text-lg text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
+                Eksplorasi 9 pilar utama ilmu komputer mulai dari berpikir komputasional, sistem komputer, jaringan internet, hingga proyek analisis data secara interaktif.
+            </p>
+
+            <!-- Bar Pencarian & Filter -->
+            <div class="flex flex-col sm:flex-row items-center gap-3 max-w-2xl mx-auto">
+                <div class="relative w-full">
+                    <i data-lucide="search" class="w-5 h-5 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2"></i>
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        placeholder="Cari materi atau istilah (misal: IP Address, Flowchart, Excel)..." 
+                        class="w-full pl-12 pr-4 py-3.5 rounded-2xl glass-card text-sm sm:text-base text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500 shadow-sm transition-all"
+                    >
+                    <button id="clearSearch" class="hidden absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+                        <i data-lucide="x-circle" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filter Kategori Pills -->
+            <div id="categoryFilters" class="flex flex-wrap items-center justify-center gap-2 mt-6">
+                <button data-filter="all" class="filter-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-brand-600 text-white shadow-md shadow-brand-500/25 transition-all">
+                    Semua Materi (9)
+                </button>
+                <button data-filter="fondasi" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold glass-card text-slate-600 dark:text-slate-300 hover:border-brand-400 transition-all">
+                    Fondasi & Sistem
+                </button>
+                <button data-filter="logika" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold glass-card text-slate-600 dark:text-slate-300 hover:border-brand-400 transition-all">
+                    Logika & Algoritma
+                </button>
+                <button data-filter="aplikasi" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold glass-card text-slate-600 dark:text-slate-300 hover:border-brand-400 transition-all">
+                    Aplikasi & Data
+                </button>
+                <button data-filter="jaringan" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold glass-card text-slate-600 dark:text-slate-300 hover:border-brand-400 transition-all">
+                    Jaringan & Literasi
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Progres Mobile Bar (Muncul hanya di layar kecil) -->
+    <div class="md:hidden max-w-7xl mx-auto px-4 mb-6">
+        <div class="glass-card p-4 rounded-2xl flex items-center justify-between">
+            <div>
+                <p class="text-xs font-semibold text-slate-500 dark:text-slate-400">Status Penguasaan Materi</p>
+                <p class="text-sm font-bold text-slate-900 dark:text-white"><span id="mobileProgressText">0 dari 9</span> Bab Selesai</p>
+            </div>
+            <div class="w-32 h-2.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+                <div id="mobileProgressBar" class="h-full bg-gradient-to-r from-brand-500 to-emerald-500 transition-all duration-500" style="width: 0%"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Konten Utama: Grid Kartu Materi -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+        <!-- Grid Kartu -->
+        <div id="materialsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Kartu akan dirender secara dinamis melalui JavaScript -->
+        </div>
+
+        <!-- State Kosong Jika Pencarian Tidak Ditemukan -->
+        <div id="emptyState" class="hidden text-center py-16 glass-card rounded-3xl max-w-lg mx-auto mt-8">
+            <div class="w-16 h-16 bg-slate-100 dark:bg-slate-800 rounded-2xl flex items-center justify-center mx-auto mb-4 text-slate-400">
+                <i data-lucide="search-x" class="w-8 h-8"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Materi Tidak Ditemukan</h3>
+            <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Coba gunakan kata kunci lain seperti "Hardware", "Algoritma", atau "Wi-Fi".</p>
+            <button onclick="resetFilters()" class="px-4 py-2 rounded-xl bg-brand-600 text-white text-sm font-semibold hover:bg-brand-700 transition-colors">
+                Reset Pencarian
+            </button>
+        </div>
+    </main>
+
+    <!-- Modal Detail Materi -->
+    <div id="detailModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm transition-opacity">
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl max-w-2xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-fade-in">
+            <!-- Header Modal -->
+            <div id="modalHeader" class="p-6 border-b border-slate-100 dark:border-slate-800 flex items-start justify-between gap-4">
+                <div class="flex items-center gap-4">
+                    <div id="modalIconBox" class="w-12 h-12 rounded-2xl flex items-center justify-center text-white shrink-0 shadow-lg">
+                        <i id="modalIcon" data-lucide="book-open" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <span id="modalBadge" class="text-xs font-mono font-semibold px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                            Bab 1
+                        </span>
+                        <h2 id="modalTitle" class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mt-1">
+                            Judul Materi
+                        </h2>
+                    </div>
+                </div>
+                <button onclick="closeDetailModal()" class="p-2 rounded-xl text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+
+            <!-- Isi Modal (Scrollable) -->
+            <div id="modalBody" class="p-6 overflow-y-auto space-y-4 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+                <!-- Konten detail dirender via JS -->
+            </div>
+
+            <!-- Footer Modal -->
+            <div class="p-5 border-t border-slate-100 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-900/80 flex flex-wrap items-center justify-between gap-3">
+                <button id="modalCopyBtn" onclick="copyCurrentMaterial()" class="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 text-sm font-semibold transition-all">
+                    <i data-lucide="copy" class="w-4 h-4"></i>
+                    <span>Salin Ringkasan</span>
+                </button>
+
+                <button id="modalCompleteBtn" onclick="toggleCurrentMaterialComplete()" class="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold shadow-md shadow-emerald-500/20 transition-all">
+                    <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+                    <span>Tandai Sudah Dipahami</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Kuis Interaktif -->
+    <div id="quizModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl animate-fade-in">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-10 h-10 rounded-xl bg-brand-100 dark:bg-brand-900/50 text-brand-600 dark:text-brand-400 flex items-center justify-center">
+                        <i data-lucide="brain-circuit" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-extrabold text-lg text-slate-900 dark:text-white">Kuis Cepat Informatika</h3>
+                        <p id="quizCounter" class="text-xs text-slate-500 dark:text-slate-400">Pertanyaan 1 dari 5</p>
+                    </div>
+                </div>
+                <button onclick="closeQuizModal()" class="p-2 rounded-xl text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <div id="quizContent">
+                <!-- Soal kuis dirender di sini -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifikasi -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-4 py-3 rounded-2xl shadow-xl flex items-center gap-3 text-sm font-semibold">
+            <i data-lucide="check-circle" class="w-5 h-5 text-emerald-400 dark:text-emerald-600"></i>
+            <span id="toastMessage">Berhasil disalin!</span>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200/80 dark:border-slate-800/80 py-8 text-center text-sm text-slate-500 dark:text-slate-400">
+        <div class="max-w-7xl mx-auto px-4">
+            <p class="font-medium">Modul Pembelajaran Informatika Semester 1 • Disusun untuk Pembelajaran Interaktif</p>
+        </div>
+    </footer>
+
+    <!-- Script Utama Aplikasi -->
+    <script>
+        // ==========================================
+        // 1. DATA MATERI INFORMATIKA SEMESTER 1
+        // ==========================================
+        const materialsData = [
+            {
+                id: 1,
+                title: "Pengenalan Informatika",
+                category: "fondasi",
+                categoryLabel: "Fondasi & Sistem",
+                icon: "cpu",
+                gradient: "from-indigo-500 to-blue-600",
+                summary: "Memahami definisi, manfaat, serta pilar-pilar ruang lingkup ilmu Informatika dalam kehidupan modern.",
+                subtopics: ["Pengertian", "Manfaat", "Ruang Lingkup"],
+                details: [
+                    {
+                        heading: "Pengertian Informatika",
+                        text: "Ilmu yang mempelajari struktur, sifat, dan interaksi dari berbagai sistem yang digunakan untuk mengumpulkan data, memproses, menyimpan hasil pemrosesan, serta menampilkannya dalam bentuk informasi yang bermanfaat."
+                    },
+                    {
+                        heading: "Manfaat Informatika",
+                        text: "Mempermudah pekerjaan manusia melalui otomatisasi, mempercepat akses dan pertukaran informasi global, serta melatih pola pikir pemecahan masalah secara logis dan sistematis."
+                    },
+                    {
+                        heading: "Ruang Lingkup Informatika",
+                        text: "Terbagi ke dalam beberapa pilar utama: Berpikir Komputasional (BK), Teknologi Informasi dan Komunikasi (TIK), Sistem Komputer (SK), Jaringan Komputer dan Internet (JKI), Analisis Data (AD), Algoritma dan Pemrograman (AP), Dampak Sosial Informatika (DSI), dan Praktik Lintas Bidang (PLB)."
+                    }
+                ]
+            },
+            {
+                id: 2,
+                title: "Sistem Komputer",
+                category: "fondasi",
+                categoryLabel: "Fondasi & Sistem",
+                icon: "hard-drive",
+                gradient: "from-purple-500 to-indigo-600",
+                summary: "Mengenal sinergi antara perangkat keras (hardware), perangkat lunak (software), pengguna (brainware), dan sistem operasi.",
+                subtopics: ["Hardware", "Software", "Brainware", "Sistem Operasi"],
+                details: [
+                    {
+                        heading: "Hardware (Perangkat Keras)",
+                        text: "Komponen fisik komputer yang dapat dilihat dan disentuh, meliputi perangkat masukan (keyboard, mouse), pemroses (CPU, RAM), keluaran (monitor, printer), dan penyimpanan (SSD, harddisk)."
+                    },
+                    {
+                        heading: "Software (Perangkat Lunak)",
+                        text: "Sekumpulan instruksi atau program digital yang mengatur kerja perangkat keras, terdiri atas perangkat lunak sistem dan perangkat lunak aplikasi."
+                    },
+                    {
+                        heading: "Brainware (Pengguna)",
+                        text: "Manusia yang mengoperasikan, mengelola, merancang, dan mengembangkan sistem komputer, seperti operator, programmer, dan administrator jaringan."
+                    },
+                    {
+                        heading: "Sistem Operasi (Operating System)",
+                        text: "Perangkat lunak utama yang mengelola seluruh sumber daya komputer dan menjembatani komunikasi antara pengguna, aplikasi, dan perangkat keras (contoh: Windows, Linux, macOS, Android)."
+                    }
+                ]
+            },
+            {
+                id: 3,
+                title: "Berpikir Komputasional",
+                category: "logika",
+                categoryLabel: "Logika & Algoritma",
+                icon: "puzzle",
+                gradient: "from-emerald-500 to-teal-600",
+                summary: "Metode penyelesaian masalah kompleks menggunakan empat fondasi utama: dekomposisi, pola, abstraksi, dan algoritma.",
+                subtopics: ["Dekomposisi", "Pola", "Abstraksi", "Algoritma"],
+                details: [
+                    {
+                        heading: "Dekomposisi (Decomposition)",
+                        text: "Memecah masalah yang besar dan kompleks menjadi bagian-bagian kecil yang lebih sederhana agar lebih mudah dikelola, dipahami, dan diselesaikan."
+                    },
+                    {
+                        heading: "Pengenalan Pola (Pattern Recognition)",
+                        text: "Mencari kesamaan, tren, atau keteraturan di antara bagian-bagian masalah untuk memprediksi solusi yang paling efisien."
+                    },
+                    {
+                        heading: "Abstraksi (Abstraction)",
+                        text: "Menyaring informasi dengan berfokus hanya pada detail yang relevan dan penting, serta mengabaikan detail yang tidak diperlukan."
+                    },
+                    {
+                        heading: "Algoritma (Algorithm)",
+                        text: "Menyusun langkah-langkah penyelesaian masalah secara berurutan, logis, sistematis, dan terukur."
+                    }
+                ]
+            },
+            {
+                id: 4,
+                title: "Teknologi Informasi dan Komunikasi",
+                category: "aplikasi",
+                categoryLabel: "Aplikasi & Data",
+                icon: "layout-grid",
+                gradient: "from-sky-500 to-blue-600",
+                summary: "Penguasaan perangkat lunak produktivitas perkantoran untuk mengolah dokumen, angka, dan bahan presentasi.",
+                subtopics: ["Microsoft Word", "Microsoft Excel", "Microsoft PowerPoint"],
+                details: [
+                    {
+                        heading: "Microsoft Word (Pengolah Kata)",
+                        text: "Digunakan untuk membuat, menyunting, dan memformat dokumen teks seperti makalah, laporan, dan surat resmi dengan fitur pengaturan halaman, tabel, serta daftar isi otomatis."
+                    },
+                    {
+                        heading: "Microsoft Excel (Pengolah Angka)",
+                        text: "Digunakan untuk mengolah data numerik dalam bentuk tabel (spreadsheet), melakukan perhitungan menggunakan rumus/fungsi (SUM, AVERAGE, IF), serta membuat grafik."
+                    },
+                    {
+                        heading: "Microsoft PowerPoint (Aplikasi Presentasi)",
+                        text: "Digunakan untuk menyusun bahan paparan visual berupa slide yang memadukan teks, gambar, diagram, dan animasi guna menyampaikan informasi secara menarik."
+                    }
+                ]
+            },
+            {
+                id: 5,
+                title: "Jaringan Komputer dan Internet",
+                category: "jaringan",
+                categoryLabel: "Jaringan & Literasi",
+                icon: "globe",
+                gradient: "from-cyan-500 to-teal-600",
+                summary: "Memahami bagaimana perangkat saling terhubung melalui jaringan lokal, nirkabel, alamat IP, hingga internet global.",
+                subtopics: ["LAN", "WAN", "Wi-Fi", "IP Address", "Internet"],
+                details: [
+                    {
+                        heading: "LAN (Local Area Network)",
+                        text: "Jaringan komputer yang mencakup area geografis terbatas, seperti ruang laboratorium komputer, kantor, atau satu gedung sekolah."
+                    },
+                    {
+                        heading: "WAN (Wide Area Network)",
+                        text: "Jaringan komputer berskala luas yang menghubungkan berbagai jaringan LAN antar kota, negara, hingga benua."
+                    },
+                    {
+                        heading: "Wi-Fi (Wireless Fidelity)",
+                        text: "Teknologi jaringan nirkabel yang menggunakan gelombang radio untuk menghubungkan perangkat ke jaringan lokal maupun internet tanpa menggunakan kabel."
+                    },
+                    {
+                        heading: "IP Address & Internet",
+                        text: "IP Address adalah deretan angka unik sebagai identitas alamat perangkat dalam jaringan. Internet adalah jaringan komunikasi global yang menghubungkan jutaan jaringan menggunakan protokol TCP/IP."
+                    }
+                ]
+            },
+            {
+                id: 6,
+                title: "Literasi Digital",
+                category: "jaringan",
+                categoryLabel: "Jaringan & Literasi",
+                icon: "shield-check",
+                gradient: "from-amber-500 to-orange-600",
+                summary: "Menjadi warga digital yang cerdas dan aman dengan memahami keamanan data, etika berinternet, serta jejak digital.",
+                subtopics: ["Keamanan Digital", "Etika Internet", "Jejak Digital"],
+                details: [
+                    {
+                        heading: "Keamanan Digital (Digital Security)",
+                        text: "Upaya melindungi data pribadi, akun, dan perangkat dari ancaman siber melalui kata sandi yang kuat, autentikasi dua faktor (2FA), serta kewaspadaan terhadap phishing dan malware."
+                    },
+                    {
+                        heading: "Etika Internet (Netiquette)",
+                        text: "Norma dan tata krama dalam berkomunikasi di ruang digital, meliputi sikap saling menghormati, menghindari ujaran kebencian, menghargai hak cipta, dan tidak menyebarkan hoaks."
+                    },
+                    {
+                        heading: "Jejak Digital (Digital Footprint)",
+                        text: "Rekam data yang tertinggal dari seluruh aktivitas pengguna di internet (riwayat pencarian, unggahan, komentar) yang bersifat permanen dan dapat memengaruhi reputasi."
+                    }
+                ]
+            },
+            {
+                id: 7,
+                title: "Analisis Data",
+                category: "aplikasi",
+                categoryLabel: "Aplikasi & Data",
+                icon: "bar-chart-3",
+                gradient: "from-rose-500 to-pink-600",
+                summary: "Siklus mengolah fakta mentah mulai dari pengumpulan, pembersihan, perhitungan, hingga penyajian visualisasi data.",
+                subtopics: ["Pengumpulan Data", "Pengolahan Data", "Penyajian Data"],
+                details: [
+                    {
+                        heading: "Pengumpulan Data",
+                        text: "Proses menghimpun fakta atau informasi dari berbagai sumber melalui metode observasi, wawancara, survei/kuesioner, atau pengunduhan dataset digital."
+                    },
+                    {
+                        heading: "Pengolahan Data",
+                        text: "Tahapan membersihkan, mengelompokkan, mengurutkan, dan menghitung data mentah (misalnya mencari rata-rata, nilai maksimum/minimum) agar bermakna."
+                    },
+                    {
+                        heading: "Penyajian Data",
+                        text: "Menampilkan hasil pengolahan data dalam bentuk visual yang mudah dipahami pembaca, seperti tabel ringkasan, diagram batang, diagram garis, atau diagram lingkaran."
+                    }
+                ]
+            },
+            {
+                id: 8,
+                title: "Algoritma dan Pemrograman Dasar",
+                category: "logika",
+                categoryLabel: "Logika & Algoritma",
+                icon: "code-2",
+                gradient: "from-violet-500 to-purple-600",
+                summary: "Merancang instruksi program komputer menggunakan diagram alir (flowchart), pseudocode, dan struktur logika dasar.",
+                subtopics: ["Flowchart", "Pseudocode", "Logika Pemrograman"],
+                details: [
+                    {
+                        heading: "Flowchart (Diagram Alir)",
+                        text: "Representasi visual dari alur logika program menggunakan simbol-simbol standar seperti terminator (mulai/selesai), persegi panjang (proses), dan belah ketupat (percabangan keputusan)."
+                    },
+                    {
+                        heading: "Pseudocode",
+                        text: "Penulisan langkah-langkah algoritma menggunakan bahasa deskriptif menyerupai bahasa manusia yang terstruktur agar mudah diterjemahkan ke dalam bahasa pemrograman."
+                    },
+                    {
+                        heading: "Logika Pemrograman",
+                        text: "Pola pikir sistematis dalam menyusun instruksi kode yang bertumpu pada tiga struktur dasar: runtunan (sequence), percabangan (selection/if-else), dan perulangan (looping)."
+                    }
+                ]
+            },
+            {
+                id: 9,
+                title: "Proyek Praktik Informatika",
+                category: "aplikasi",
+                categoryLabel: "Aplikasi & Data",
+                icon: "folder-kanban",
+                gradient: "from-fuchsia-500 to-rose-600",
+                summary: "Penerapan terpadu seluruh konsep semester 1 untuk membuat dokumen laporan, tabel analisis, dan presentasi proyek.",
+                subtopics: ["Dokumen", "Tabel", "Presentasi", "Analisis Data"],
+                details: [
+                    {
+                        heading: "Integrasi Aplikasi Perkantoran & Analisis",
+                        text: "Penerapan seluruh konsep materi semester 1 secara terpadu dalam sebuah proyek studi kasus nyata untuk melatih kolaborasi dan pemecahan masalah."
+                    },
+                    {
+                        heading: "Alur Pengerjaan Proyek",
+                        text: "Siswa mengumpulkan data studi kasus lapangan, mengolah dan menganalisisnya dalam bentuk tabel dan grafik (Excel), menyusun laporan tertulis (Word), serta mempresentasikan hasilnya (PowerPoint)."
+                    }
+                ]
+            }
+        ];
+
+        // ==========================================
+        // 2. DATA KUIS INTERAKTIF (10 SOAL LENGKAP)
+        // ==========================================
+        const quizQuestions = [
+            {
+                question: "Pilar dalam ruang lingkup Informatika yang mempelajari bagaimana data mentah diolah menjadi informasi visual yang bermakna disebut...",
+                options: ["Sistem Komputer", "Analisis Data", "Jaringan Komputer", "Dampak Sosial Informatika"],
+                answer: 1,
+                explanation: "Analisis Data berfokus pada proses pengumpulan, pembersihan, pengolahan, dan penyajian data menjadi informasi yang mudah dipahami."
+            },
+            {
+                question: "Fondasi berpikir komputasional yang berfokus pada memecah masalah besar menjadi bagian-bagian kecil yang lebih mudah dikelola disebut...",
+                options: ["Abstraksi", "Dekomposisi", "Pengenalan Pola", "Algoritma"],
+                answer: 1,
+                explanation: "Dekomposisi adalah proses memecah masalah kompleks menjadi sub-masalah yang lebih kecil dan sederhana."
+            },
+            {
+                question: "Manakah di bawah ini yang termasuk ke dalam komponen Brainware dalam sistem komputer?",
+                options: ["Sistem Operasi Linux", "Processor dan RAM", "Programmer dan Operator", "Microsoft Excel"],
+                answer: 2,
+                explanation: "Brainware adalah manusia yang mengoperasikan, mengelola, atau mengembangkan sistem komputer."
+            },
+            {
+                question: "Dalam aplikasi Microsoft Excel, fitur atau fungsi yang digunakan untuk menghitung nilai rata-rata dari sekumpulan data numerik adalah...",
+                options: ["=SUM()", "=MAX()", "=AVERAGE()", "=COUNT()"],
+                answer: 2,
+                explanation: "Fungsi =AVERAGE() digunakan untuk mencari nilai rata-rata (mean) dari rentang sel yang dipilih."
+            },
+            {
+                question: "Simbol berbentuk belah ketupat (diamond) pada Flowchart digunakan untuk menyatakan...",
+                options: ["Mulai dan Selesai", "Proses Perhitungan", "Input / Output Data", "Percabangan Keputusan (Ya/Tidak)"],
+                answer: 3,
+                explanation: "Simbol belah ketupat (decision) merepresentasikan kondisi percabangan yang menghasilkan keputusan Ya/Tidak."
+            },
+            {
+                question: "Deretan angka unik yang berfungsi sebagai identitas alamat setiap perangkat yang terhubung ke jaringan komputer disebut...",
+                options: ["Wi-Fi", "IP Address", "LAN", "Jejak Digital"],
+                answer: 1,
+                explanation: "IP Address (Internet Protocol Address) adalah alamat numerik unik untuk mengidentifikasi perangkat dalam jaringan."
+            },
+            {
+                question: "Jaringan komputer yang menghubungkan perangkat dalam cakupan area terbatas seperti satu ruang laboratorium sekolah atau satu gedung disebut...",
+                options: ["WAN (Wide Area Network)", "MAN (Metropolitan Area Network)", "LAN (Local Area Network)", "Internet Global"],
+                answer: 2,
+                explanation: "LAN (Local Area Network) adalah jaringan berskala lokal dengan jangkauan area geografis yang terbatas."
+            },
+            {
+                question: "Upaya melindungi akun digital dengan menambahkan lapisan verifikasi selain kata sandi disebut...",
+                options: ["Autentikasi Dua Faktor (2FA)", "Netiquette", "Jejak Digital Pasif", "Abstraksi Data"],
+                answer: 0,
+                explanation: "Autentikasi Dua Faktor (2FA) meningkatkan keamanan digital dengan meminta verifikasi tambahan selain password."
+            },
+            {
+                question: "Penulisan langkah-langkah algoritma menggunakan bahasa deskriptif menyerupai bahasa manusia yang terstruktur agar mudah diterjemahkan ke bahasa pemrograman disebut...",
+                options: ["Flowchart", "Pseudocode", "Compiler", "Spreadsheet"],
+                answer: 1,
+                explanation: "Pseudocode adalah kode semu yang mendeskripsikan logika algoritma secara terstruktur sebelum ditulis dalam sintaks bahasa pemrograman."
+            },
+            {
+                question: "Dalam pengerjaan Proyek Praktik Informatika, urutan alur kerja yang paling sistematis dari awal hingga akhir adalah...",
+                options: [
+                    "Presentasi → Pengumpulan Data → Membuat Laporan",
+                    "Pengumpulan Data → Pengolahan di Excel → Laporan di Word → Presentasi di PowerPoint",
+                    "Membuat Grafik → Mengumpulkan Data → Menyusun Pseudocode",
+                    "Menulis Laporan di Word → Menghapus Data → Presentasi"
+                ],
+                answer: 1,
+                explanation: "Alur proyek yang sistematis dimulai dari pengumpulan data, pengolahan/analisis di Excel, penyusunan laporan di Word, lalu pemaparan menggunakan PowerPoint."
+            }
+        ];
+
+        // ==========================================
+        // 3. STATE APLIKASI
+        // ==========================================
+        let currentFilter = 'all';
+        let searchQuery = '';
+        let completedIds = JSON.parse(localStorage.getItem('informatika_completed') || '[]');
+        let activeMaterialId = null;
+
+        // State Kuis
+        let currentQuizIdx = 0;
+        let quizScore = 0;
+        let hasAnsweredCurrent = false;
+
+        // ==========================================
+        // 4. INISIALISASI & RENDER UI
+        // ==========================================
+        document.addEventListener('DOMContentLoaded', () => {
+            initTheme();
+            renderCards();
+            updateProgressUI();
+            setupEventListeners();
+            lucide.createIcons();
+        });
+
+        // Pengaturan Tema Gelap / Terang
+        function initTheme() {
+            const savedTheme = localStorage.getItem('informatika_theme');
+            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            }
+        }
+
+        function setupEventListeners() {
+            // Toggle Dark Mode
+            document.getElementById('themeToggle').addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark');
+                const isDark = document.documentElement.classList.contains('dark');
+                localStorage.setItem('informatika_theme', isDark ? 'dark' : 'light');
+            });
+
+            // Input Pencarian
+            const searchInput = document.getElementById('searchInput');
+            const clearBtn = document.getElementById('clearSearch');
+
+            searchInput.addEventListener('input', (e) => {
+                searchQuery = e.target.value.toLowerCase().trim();
+                clearBtn.classList.toggle('hidden', searchQuery === '');
+                renderCards();
+            });
+
+            clearBtn.addEventListener('click', () => {
+                searchInput.value = '';
+                searchQuery = '';
+                clearBtn.classList.add('hidden');
+                renderCards();
+            });
+
+            // Tombol Filter Kategori
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.filter-btn').forEach(b => {
+                        b.classList.remove('bg-brand-600', 'text-white', 'shadow-md', 'shadow-brand-500/25');
+                        b.classList.add('glass-card', 'text-slate-600', 'dark:text-slate-300');
+                    });
+                    btn.classList.remove('glass-card', 'text-slate-600', 'dark:text-slate-300');
+                    btn.classList.add('bg-brand-600', 'text-white', 'shadow-md', 'shadow-brand-500/25');
+
+                    currentFilter = btn.getAttribute('data-filter');
+                    renderCards();
+                });
+            });
+
+            // Tutup modal saat klik area luar
+            document.getElementById('detailModal').addEventListener('click', (e) => {
+                if (e.target.id === 'detailModal') closeDetailModal();
+            });
+            document.getElementById('quizModal').addEventListener('click', (e) => {
+                if (e.target.id === 'quizModal') closeQuizModal();
+            });
+        }
+
+        // Render Daftar Kartu Materi
+        function renderCards() {
+            const grid = document.getElementById('materialsGrid');
+            const emptyState = document.getElementById('emptyState');
+
+            const filtered = materialsData.filter(item => {
+                const matchCategory = currentFilter === 'all' || item.category === currentFilter;
+                const matchSearch = 
+                    item.title.toLowerCase().includes(searchQuery) ||
+                    item.summary.toLowerCase().includes(searchQuery) ||
+                    item.subtopics.some(sub => sub.toLowerCase().includes(searchQuery)) ||
+                    item.details.some(det => det.text.toLowerCase().includes(searchQuery));
+                return matchCategory && matchSearch;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                lucide.createIcons();
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+            grid.innerHTML = filtered.map((item, index) => {
+                const isCompleted = completedIds.includes(item.id);
+                return `
+                    <article onclick="openDetailModal(${item.id})" 
+                        style="animation-delay: ${index * 50}ms"
+                        class="group cursor-pointer glass-card rounded-3xl p-6 flex flex-col justify-between hover:-translate-y-1.5 hover:shadow-xl hover:shadow-brand-500/10 dark:hover:shadow-brand-900/20 hover:border-brand-400/60 transition-all duration-300 animate-fade-in relative overflow-hidden">
+                        
+                        <!-- Garis Aksen Atas -->
+                        <div class="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r ${item.gradient} opacity-80 group-hover:opacity-100 transition-opacity"></div>
+
+                        <div>
+                            <!-- Header Kartu -->
+                            <div class="flex items-start justify-between gap-3 mb-4 pt-1">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br ${item.gradient} flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform duration-300">
+                                    <i data-lucide="${item.icon}" class="w-6 h-6"></i>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                                        Bab 0${item.id}
+                                    </span>
+                                    ${isCompleted ? `
+                                        <span title="Sudah Dipahami" class="w-7 h-7 rounded-full bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+                                            <i data-lucide="check" class="w-4 h-4 stroke-[3]"></i>
+                                        </span>
+                                    ` : ''}
+                                </div>
+                            </div>
+
+                            <!-- Judul & Ringkasan -->
+                            <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors mb-2">
+                                ${item.title}
+                            </h3>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 line-clamp-2 mb-5 leading-relaxed">
+                                ${item.summary}
+                            </p>
+                        </div>
+
+                        <!-- Submateri Pills & Tombol Aksi -->
+                        <div>
+                            <div class="flex flex-wrap gap-1.5 mb-5">
+                                ${item.subtopics.map(sub => `
+                                    <span class="text-xs font-medium px-2.5 py-1 rounded-lg bg-slate-100/90 dark:bg-slate-800/90 text-slate-700 dark:text-slate-300 border border-slate-200/60 dark:border-slate-700/60">
+                                        ${sub}
+                                    </span>
+                                `).join('')}
+                            </div>
+
+                            <div class="pt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs font-bold text-brand-600 dark:text-brand-400">
+                                <span>Pelajari Selengkapnya</span>
+                                <span class="w-7 h-7 rounded-full bg-brand-50 dark:bg-brand-900/40 flex items-center justify-center group-hover:translate-x-1 transition-transform">
+                                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </article>
+                `;
+            }).join('');
+
+            lucide.createIcons();
+        }
+
+        function resetFilters() {
+            document.getElementById('searchInput').value = '';
+            searchQuery = '';
+            document.getElementById('clearSearch').classList.add('hidden');
+            document.querySelector('[data-filter="all"]').click();
+        }
+
+        // ==========================================
+        // 5. MODAL DETAIL & PROGRES BELAJAR
+        // ==========================================
+        function openDetailModal(id) {
+            const item = materialsData.find(m => m.id === id);
+            if (!item) return;
+
+            activeMaterialId = id;
+            const modal = document.getElementById('detailModal');
+            
+            // Update Header Modal
+            const iconBox = document.getElementById('modalIconBox');
+            iconBox.className = `w-12 h-12 rounded-2xl bg-gradient-to-br ${item.gradient} flex items-center justify-center text-white shrink-0 shadow-lg`;
+            document.getElementById('modalIcon').setAttribute('data-lucide', item.icon);
+            document.getElementById('modalBadge').textContent = `Bab 0${item.id} • ${item.categoryLabel}`;
+            document.getElementById('modalTitle').textContent = item.title;
+
+            // Update Isi Detail
+            const body = document.getElementById('modalBody');
+            body.innerHTML = item.details.map(det => `
+                <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/70 dark:border-slate-700/70">
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-1.5 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-brand-500"></span>
+                        ${det.heading}
+                    </h4>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                        ${det.text}
+                    </p>
+                </div>
+            `).join('');
+
+            updateModalCompleteButton();
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+            lucide.createIcons();
+        }
+
+        function closeDetailModal() {
+            const modal = document.getElementById('detailModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = '';
+            activeMaterialId = null;
+        }
+
+        function toggleCurrentMaterialComplete() {
+            if (!activeMaterialId) return;
+
+            const idx = completedIds.indexOf(activeMaterialId);
+            if (idx === -1) {
+                completedIds.push(activeMaterialId);
+                showToast("Hebat! Bab ditandai sudah dipahami.");
+            } else {
+                completedIds.splice(idx, 1);
+                showToast("Status selesai dibatalkan.");
+            }
+
+            localStorage.setItem('informatika_completed', JSON.stringify(completedIds));
+            updateModalCompleteButton();
+            updateProgressUI();
+            renderCards();
+        }
+
+        function updateModalCompleteButton() {
+            const btn = document.getElementById('modalCompleteBtn');
+            const isCompleted = completedIds.includes(activeMaterialId);
+
+            if (isCompleted) {
+                btn.className = "flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-sm font-semibold transition-all";
+                btn.innerHTML = `<i data-lucide="rotate-ccw" class="w-4 h-4"></i><span>Sudah Dipahami (Batalkan)</span>`;
+            } else {
+                btn.className = "flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold shadow-md shadow-emerald-500/20 transition-all";
+                btn.innerHTML = `<i data-lucide="check-circle-2" class="w-4 h-4"></i><span>Tandai Sudah Dipahami</span>`;
+            }
+            lucide.createIcons();
+        }
+
+        function updateProgressUI() {
+            const total = materialsData.length;
+            const count = completedIds.length;
+            const pct = Math.round((count / total) * 100);
+
+            document.getElementById('navProgressBar').style.width = `${pct}%`;
+            document.getElementById('navProgressText').textContent = `${count}/${total}`;
+            
+            document.getElementById('mobileProgressBar').style.width = `${pct}%`;
+            document.getElementById('mobileProgressText').textContent = `${count} dari ${total}`;
+        }
+
+        // Fitur Salin Ringkasan ke Clipboard
+        function copyCurrentMaterial() {
+            const item = materialsData.find(m => m.id === activeMaterialId);
+            if (!item) return;
+
+            const textToCopy = `RINGKASAN MATERI: ${item.title.toUpperCase()}\n\n` + 
+                item.details.map(d => `• ${d.heading}:\n  ${d.text}`).join('\n\n');
+
+            const tempTextarea = document.createElement('textarea');
+            tempTextarea.value = textToCopy;
+            document.body.appendChild(tempTextarea);
+            tempTextarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextarea);
+
+            showToast("Ringkasan materi berhasil disalin!");
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').textContent = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 2800);
+        }
+
+        // ==========================================
+        // 6. LOGIKA KUIS INTERAKTIF
+        // ==========================================
+        function openQuizModal() {
+            currentQuizIdx = 0;
+            quizScore = 0;
+            hasAnsweredCurrent = false;
+            const modal = document.getElementById('quizModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+            renderQuizQuestion();
+        }
+
+        function closeQuizModal() {
+            const modal = document.getElementById('quizModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = '';
+        }
+
+        function renderQuizQuestion() {
+            const q = quizQuestions[currentQuizIdx];
+            hasAnsweredCurrent = false;
+            document.getElementById('quizCounter').textContent = `Pertanyaan ${currentQuizIdx + 1} dari ${quizQuestions.length}`;
+
+            const container = document.getElementById('quizContent');
+            container.innerHTML = `
+                <p class="font-bold text-base sm:text-lg text-slate-900 dark:text-white mb-5 leading-snug">
+                    ${q.question}
+                </p>
+                <div class="space-y-3 mb-5" id="quizOptions">
+                    ${q.options.map((opt, idx) => `
+                        <button onclick="selectQuizOption(${idx})" id="opt-${idx}"
+                            class="w-full text-left p-4 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-brand-500 dark:hover:border-brand-500 bg-slate-50 dark:bg-slate-800/50 text-sm font-medium text-slate-800 dark:text-slate-200 transition-all flex items-center justify-between">
+                            <span>${opt}</span>
+                        </button>
+                    `).join('')}
+                </div>
+                <div id="quizFeedback" class="hidden p-4 rounded-2xl text-sm mb-5"></div>
+                <div class="flex justify-end">
+                    <button id="nextQuizBtn" onclick="nextQuizStep()" class="hidden px-5 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold transition-all">
+                        ${currentQuizIdx < quizQuestions.length - 1 ? 'Pertanyaan Berikutnya' : 'Lihat Hasil Skor'}
+                    </button>
+                </div>
+            `;
+        }
+
+        function selectQuizOption(selectedIdx) {
+            if (hasAnsweredCurrent) return;
+            hasAnsweredCurrent = true;
+
+            const q = quizQuestions[currentQuizIdx];
+            const isCorrect = selectedIdx === q.answer;
+            if (isCorrect) quizScore++;
+
+            // Tandai jawaban benar dan salah
+            q.options.forEach((_, idx) => {
+                const btn = document.getElementById(`opt-${idx}`);
+                btn.disabled = true;
+                if (idx === q.answer) {
+                    btn.className = "w-full text-left p-4 rounded-2xl border-2 border-emerald-500 bg-emerald-50 dark:bg-emerald-900/30 text-sm font-bold text-emerald-800 dark:text-emerald-200 flex items-center justify-between";
+                    btn.innerHTML += `<i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600"></i>`;
+                } else if (idx === selectedIdx && !isCorrect) {
+                    btn.className = "w-full text-left p-4 rounded-2xl border-2 border-rose-500 bg-rose-50 dark:bg-rose-900/30 text-sm font-bold text-rose-800 dark:text-rose-200 flex items-center justify-between";
+                    btn.innerHTML += `<i data-lucide="x-circle" class="w-5 h-5 text-rose-600"></i>`;
+                }
+            });
+
+            const feedback = document.getElementById('quizFeedback');
+            feedback.classList.remove('hidden');
+            feedback.className = `p-4 rounded-2xl text-sm mb-5 ${isCorrect ? 'bg-emerald-100/70 dark:bg-emerald-900/40 text-emerald-900 dark:text-emerald-200' : 'bg-amber-100/70 dark:bg-amber-900/40 text-amber-900 dark:text-amber-200'}`;
+            feedback.innerHTML = `<strong>${isCorrect ? 'Tepat Sekali!' : 'Kurang Tepat.'}</strong> ${q.explanation}`;
+
+            document.getElementById('nextQuizBtn').classList.remove('hidden');
+            lucide.createIcons();
+        }
+
+        function nextQuizStep() {
+            currentQuizIdx++;
+            if (currentQuizIdx < quizQuestions.length) {
+                renderQuizQuestion();
+            } else {
+                showQuizResult();
+            }
+        }
+
+        function showQuizResult() {
+            const finalScore = Math.round((quizScore / quizQuestions.length) * 100);
+            document.getElementById('quizCounter').textContent = "Evaluasi Selesai";
+            document.getElementById('quizContent').innerHTML = `
+                <div class="text-center py-2">
+                    <div class="w-20 h-20 rounded-full bg-gradient-to-br from-brand-500 to-purple-600 text-white flex items-center justify-center mx-auto mb-3 text-2xl font-extrabold shadow-lg">
+                        ${finalScore}
+                    </div>
+                    <h4 class="text-xl font-extrabold text-slate-900 dark:text-white mb-1">
+                        ${finalScore >= 80 ? 'Luar Biasa! Penguasaan Sangat Baik' : 'Terus Berlatih & Pelajari Materi!'}
+                    </h4>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-5">
+                        Kamu menjawab benar <strong>${quizScore} dari ${quizQuestions.length}</strong> pertanyaan.
+                    </p>
+
+                    <!-- Formulir Pengiriman Nilai ke Guru -->
+                    <div id="submitScoreSection" class="text-left bg-slate-50 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 rounded-2xl p-4 sm:p-5 mb-5">
+                        <h5 class="text-sm font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
+                            <i data-lucide="send" class="w-4 h-4 text-brand-500"></i>
+                            Kirim Data Nilai ke Guru
+                        </h5>
+                        <div class="space-y-3">
+                            <div>
+                                <label for="studentName" class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Nama Lengkap Siswa</label>
+                                <input type="text" id="studentName" placeholder="Masukkan nama lengkap..." 
+                                    class="w-full px-3.5 py-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500">
+                            </div>
+                            <div>
+                                <label for="studentClass" class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Kelas</label>
+                                <input type="text" id="studentClass" placeholder="Contoh: VII-A / X-1" 
+                                    class="w-full px-3.5 py-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500">
+                            </div>
+                            <p id="submitErrorMsg" class="hidden text-xs font-semibold text-rose-600 dark:text-rose-400">
+                                Mohon lengkapi Nama Lengkap dan Kelas terlebih dahulu.
+                            </p>
+                            <button id="submitQuizBtn" onclick="submitQuizToTeacher(${finalScore})" 
+                                class="w-full py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold shadow-md shadow-emerald-500/20 flex items-center justify-center gap-2 transition-all active:scale-95">
+                                <i data-lucide="check-circle" class="w-4 h-4"></i>
+                                <span>Kirim Jawaban</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-center gap-3">
+                        <button onclick="openQuizModal()" class="px-5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 text-sm font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                            Ulangi Kuis
+                        </button>
+                        <button onclick="closeQuizModal()" class="px-5 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold transition-colors">
+                            Kembali ke Materi
+                        </button>
+                    </div>
+                </div>
+            `;
+            lucide.createIcons();
+        }
+
+        // URL Web App dari Google Apps Script yang sudah terhubung ke Spreadsheet
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwpuH-ewp0DPkavUdz8VhJGBlX0fnCXs83NBtXjGwzKzCmx6kl0GWFVuhUnx5ArkYFeXg/exec";
+
+        async function submitQuizToTeacher(finalScore) {
+            const nameInput = document.getElementById('studentName');
+            const classInput = document.getElementById('studentClass');
+            const errorMsg = document.getElementById('submitErrorMsg');
+            const submitBtn = document.getElementById('submitQuizBtn');
+
+            const studentName = nameInput.value.trim();
+            const studentClass = classInput.value.trim();
+
+            if (!studentName || !studentClass) {
+                errorMsg.classList.remove('hidden');
+                return;
+            }
+
+            errorMsg.classList.add('hidden');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `<i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i><span>Mengirim ke Spreadsheet...</span>`;
+            lucide.createIcons();
+
+            const timestamp = new Date().toLocaleString('id-ID', { dateStyle: 'medium', timeStyle: 'short' });
+            const reportText = `LAPORAN NILAI KUIS INFORMATIKA\nNama: ${studentName}\nKelas: ${studentClass}\nSkor: ${finalScore} (${quizScore}/${quizQuestions.length} Benar)\nWaktu: ${timestamp}`;
+            let isSavedToCloud = false;
+
+            // Kirim data ke Google Apps Script jika URL sudah dikonfigurasi
+            if (GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL.startsWith("https://")) {
+                try {
+                    const response = await fetch(GOOGLE_SCRIPT_URL, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'text/plain;charset=utf-8'
+                        },
+                        body: JSON.stringify({
+                            nama: studentName,
+                            kelas: studentClass,
+                            skor: finalScore,
+                            benar: quizScore,
+                            total: quizQuestions.length
+                        })
+                    });
+                    const result = await response.json();
+                    if (result.status === 'success') {
+                        isSavedToCloud = true;
+                    }
+                } catch (err) {
+                    console.error("Gagal mengirim ke Google Spreadsheet:", err);
+                }
+            }
+
+            const statusSubtitle = isSavedToCloud
+                ? "Data nilai telah tersimpan otomatis ke Google Spreadsheet guru."
+                : "Data nilai telah tercatat (atur GOOGLE_SCRIPT_URL untuk sinkronisasi otomatis ke Spreadsheet).";
+
+            const section = document.getElementById('submitScoreSection');
+            section.className = "text-left bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/70 rounded-2xl p-4 sm:p-5 mb-5 animate-fade-in";
+            section.innerHTML = `
+                <div class="flex items-start gap-3">
+                    <div class="w-9 h-9 rounded-xl bg-emerald-100 dark:bg-emerald-900/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+                        <i data-lucide="badge-check" class="w-5 h-5"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h5 class="text-sm font-extrabold text-emerald-900 dark:text-emerald-200">Jawaban Berhasil Dikirim!</h5>
+                        <p class="text-xs text-emerald-700 dark:text-emerald-300 mt-0.5 mb-3">${statusSubtitle}</p>
+                        <div class="bg-white/80 dark:bg-slate-900/80 rounded-xl p-3 text-xs space-y-1 text-slate-700 dark:text-slate-300 border border-emerald-200/60 dark:border-emerald-800/50 font-mono">
+                            <div><strong>Nama :</strong> ${studentName}</div>
+                            <div><strong>Kelas:</strong> ${studentClass}</div>
+                            <div><strong>Nilai:</strong> ${finalScore} (${quizScore}/${quizQuestions.length} Benar)</div>
+                            <div><strong>Waktu:</strong> ${timestamp}</div>
+                        </div>
+                        <button onclick="copyQuizReport(\`${reportText.replace(/\n/g, '\\n')}\`)" class="mt-3 inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 dark:text-emerald-300 hover:underline">
+                            <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                            <span>Salin Bukti Laporan (untuk WA / Classroom)</span>
+                        </button>
+                    </div>
+                </div>
+            `;
+            lucide.createIcons();
+            showToast(isSavedToCloud ? "Tersimpan di Google Spreadsheet!" : "Data nilai berhasil diproses!");
+        }
+
+        function copyQuizReport(text) {
+            const tempTextarea = document.createElement('textarea');
+            tempTextarea.value = text;
+            document.body.appendChild(tempTextarea);
+            tempTextarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextarea);
+            showToast("Bukti laporan nilai berhasil disalin!");
+        }
+    </script>
+</body>
+</html>
